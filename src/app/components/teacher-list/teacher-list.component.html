@@ -1,0 +1,30 @@
+<!-- Title group  -->
+<div class="title-group">
+    <h1 class="mat-h1">Teachers List</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+  </div>
+  
+  <p *ngIf="TeacherData.length <= 0" class="no-data">There is no teachers added yet!</p>
+  
+  <mat-nav-list>
+    <mat-list-item *ngFor="let teacher of TeacherData; let i = index">
+        <mat-list-item>
+        <h3 matLine> {{teacher.name}} </h3>
+        </mat-list-item>
+        <mat-list-item *ngFor="let sub of teacher.subjects">
+            <p matLine> {{sub.name}} </p>
+        </mat-list-item>
+        <mat-list-item>
+            <p matLine class="demo-2"> {{teacher.salary}} </p>
+        </mat-list-item>
+    
+       <button mat-icon-button (click)=" editTeacher(teacher._id)">
+          <mat-icon>create</mat-icon>
+       </button>
+       <button mat-icon-button (click)=" deleteTeacher(i, teacher)">
+        <mat-icon>clear</mat-icon> 
+     </button>
+    </mat-list-item>
+  
+  </mat-nav-list>
+ 
